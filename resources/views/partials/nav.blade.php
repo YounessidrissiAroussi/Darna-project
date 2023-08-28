@@ -18,7 +18,7 @@
                         {{auth()->user()->name}}
                     </button>
                     <div class="dropdown-menu rounded w-100">
-                      <a class="dropdown-item" href="#">Profile</a>
+                      <a class="dropdown-item" href="/Profile">My Profile</a>
                       <div class="dropdown-divider"></div>
                       <a class="dropdown-item" href="/logout">logout</a>
                     </div>

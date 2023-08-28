@@ -22,11 +22,7 @@ class UpdateProfileRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|min:3',
-            'email'=> 'required|email',
-            'password'=> 'required|min:8|max:50|confirmed',
-            // 'bio' => 'required',
-            // 'image' => 'image|mimes:png,jpg,jpeg,svg|max:10240'
+          
         ];
     }
 }

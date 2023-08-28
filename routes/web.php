@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('layout');
+    return view('partials.publication');
 });
 
 Route::get('/register',[ProfileController::class , 'create'])->name('login.create');
@@ -25,6 +25,7 @@ Route::get('/login',[ProfileController::class , 'login'])->name('login.check');
 Route::post('/login',[ProfileController::class , 'checkLogin'])->name('login.check');
 
 Route::get('/logout',[ProfileController::class , 'logout']);
+Route::get('/Profile',[ProfileController::class , 'editProfile']);
 
 
 

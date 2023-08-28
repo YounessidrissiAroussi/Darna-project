@@ -59,19 +59,12 @@ class ProfileController extends Controller
         return redirect('/');
     }
 
-    public function show(Profile $profile)
+    public function editProfile(Request $request)
     {
-        //
+        $user = $request->user();
+        return view('auth.profile',compact('user'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    
-
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(UpdateProfileRequest $request, Profile $profile)
     {
         //
