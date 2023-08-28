@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('layout');
 });
+
+Route::get('/register',[ProfileController::class , 'create'])->name('login.create');
+Route::post('/register',[ProfileController::class , 'storeRegister'])->name('login.create');
+
+Route::get('/login',[ProfileController::class , 'login'])->name('login.check');
+Route::post('/login',[ProfileController::class , 'checkLogin'])->name('login.check');
+
+Route::get('/logout',[ProfileController::class , 'logout']);
+
+
+
