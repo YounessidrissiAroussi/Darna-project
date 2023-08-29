@@ -19,6 +19,7 @@
                     </button>
                     <div class="dropdown-menu rounded w-100">
                       <a class="dropdown-item" href="/Profile">My Profile</a>
+                      <a class="dropdown-item" href="/Setting">Setting</a>
                       <div class="dropdown-divider"></div>
                       <a class="dropdown-item" href="/logout">logout</a>
                     </div>

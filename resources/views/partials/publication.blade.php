@@ -7,20 +7,34 @@
                 <div class="row pb-3">
                     <div class="col-md-6 mb-4 pb-2">
                         <div class="package-item bg-white mb-2">
-                            <img class="img-fluid" src="img/package-1.jpg" alt="">
+                            <img class="img-fluid" src="{{asset('A.png')}}" alt="">
+                            @auth
+                            <div class="btn-group dropright" style="position:absolute;left:88% ">
+                                <a type="button" class="btn btn-dark text-white dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  <i class="fa fa-list"></i>
+                                </a>
+                                <div class="dropdown-menu rounded">
+                                        <h6 class="dropdown-header">MORE ACTIONS</h6>
+                                        <a class="dropdown-item fa fa-edit" href="#"> Edit</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item fa fa-trash" href="#">Delete</a>
+                                </div>
+                              </div>
+                            @endauth
                             <div class="p-4">
                                 <div class="d-flex justify-content-between mb-3">
                                     <small class="m-0"><i class="fa fa-map-marker-alt text-primary mr-2"></i>Thailand</small>
                                     <small class="m-0"><i class="fa fa-calendar-alt text-primary mr-2"></i>3 days</small>
                                     <small class="m-0"><i class="fa fa-user text-primary mr-2"></i>2 Person</small>
                                 </div>
-                                <a class="h5 text-decoration-none" href="/">Discover amazing places of the world with us</a>
-                                <div class="border-top mt-4 pt-4">
-                                    <div class="d-flex justify-content-between">
-                                        <h6 class="m-0"><i class="fa fa-star text-primary mr-2"></i>4.5 <small>(250)</small></h6>
-                                        <h5 class="m-0">$350</h5>
+                                <a class="h5 text-decoration-none" href="/">Discover amazing places of the world with us
+                                    <div class="border-top mt-4 pt-4">
+                                        <div class="d-flex justify-content-between">
+                                            <h6 class="m-0"><i class="fa fa-star text-primary mr-2"></i>4.5 <small>(250)</small></h6>
+                                            <h5 class="m-0">$350</h5>
+                                        </div>
                                     </div>
-                                </div>
+                            </a>
                             </div>
                         </div>
                     </div>

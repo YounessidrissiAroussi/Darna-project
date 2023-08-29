@@ -22,7 +22,8 @@ class UpdateProfileRequest extends FormRequest
     public function rules(): array
     {
         return [
-          
+            'name' => 'required|min:3',
+            'password'=> 'required|min:9|max:50|confirmed',
         ];
     }
 }

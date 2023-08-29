@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Profile;
 use App\Http\Requests\StoreProfileRequest;
 use App\Http\Requests\UpdateProfileRequest;
+use Faker\Guesser\Name;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -59,22 +60,48 @@ class ProfileController extends Controller
         return redirect('/');
     }
 
-    public function editProfile(Request $request)
+    public function Profile(Request $request)
     {
         $user = $request->user();
         return view('auth.profile',compact('user'));
     }
-
-    public function update(UpdateProfileRequest $request, Profile $profile)
+    public function update(UpdateProfileRequest $request)
     {
-        //
+        $user = Profile::find($request->id);
+        if($user && Hash::check($request->old_password, $user->password) )
+        {
+            $request->validated();
+         
+                $user->name = $request->name;
+                $user->email = $user->email;
+                $user->password = Hash::make($request->password);
+                $user->update();
+           
+            return back()->with('success','Account has updated');
+        }else{
+            return back()->with('danger',"password is not correct");
+        }
+        
+    }
+    public function ProfileSetting(Request $request)
+    {
+        $user = $request->user();
+        return view('auth.profileSetting' , compact('user'));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Profile $profile)
+    public function profileDelete(Request $request)
     {
-        //
+        $user = Profile::find($request->id);
+        if($user && Hash::check($request->password, $user->password) )
+        {
+            $user->delete();
+            Session::flush();
+            Auth::logout();
+            return redirect('/')->with('success','Account has delete');
+        }else{
+            return back()->with('danger',"password is not correct ");
+        }
     }
+
+    
 }
