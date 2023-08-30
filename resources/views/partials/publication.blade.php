@@ -3,17 +3,21 @@
 <div class="container-fluid">
     @php
     use App\Models\Ville;
+    use App\Models\Publication;
         $cities = Ville::all();
+         $publications = Publication::all();
     @endphp
     @auth
     <div class="container pt-5">
             <div class="col-lg-8">
                 <div class="row">
-                    <a onclick="document.getElementById('id01').style.display='block'"  class="col-md-6 text-decoration-none alert alert-success cursor-pointer">
-                        create Publish
-                    </a>
-                    <div id="id01" class="modal">
-                        <form class="container rounded modal-content animate" action="" method="">
+                        <a onclick="document.getElementById('id01').style.display='block'"  class="col-md-6 text-decoration-none border border-primary border-5 py-3 rounded-pill bg-white" style="cursor: pointer;">
+                                start a post
+                        </a>
+                </div>
+                    <div id="id01" class="modal" style="overflow-y: scroll;">
+                        <form class="container rounded modal-content animate" method="POST" action="/publish" enctype="multipart/form-data">
+                            @csrf
                             <div class="col-md-12">
                                 <h1 class="mt-2 mb-4 text-primary"><span class="text-dark">Create</span> Publish</h1>
                                 <div class="col">
@@ -69,25 +73,16 @@
                                     </div>
                                     <div class="col-md-12">
                                         <div class="mb-3 mb-md-0">
-                                            <select class="custom-select px-4" style="height: 47px;">
-                                                <option selected>bedroom</option>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4">4</option>
-                                                <option value="5">5</option>
-                                            </select>
+                                            <input type="file" class="form-control py-2"  name="images[]" multiple />
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="d-flex" style="margin: auto">
-                                <button class="btn btn-primary rounded my-5 " style="margin-left:4%;"> Create</button>
-                                <button class="btn btn-danger rounded my-5" onclick="document.getElementById('id01').style.display='none'" style="margin-left:4%;"> Cancel</button>
-
-                              
+                                <button  class="btn btn-primary rounded my-5 " style="margin-left:4%;"> Create</button>
                             </div>
                         </form>
+                        
                       </div>
                 </div>
             </div> 
@@ -95,9 +90,10 @@
      
 @endauth
     <div class="container py-5">
-        <div class="row">
-            <div class="col-lg-8">
+        <div class="row"><div class="col-lg-8">
                 <div class="row pb-3">
+            @foreach ($publications as $item)
+            
                     <div class="col-md-6 mb-4 pb-2">
                         <div class="package-item bg-white mb-2">
                             <img class="img-fluid" src="{{asset('A.png')}}" alt="">
@@ -116,22 +112,24 @@
                             @endauth
                             <div class="p-4">
                                 <div class="d-flex justify-content-between mb-3">
-                                    <small class="m-0"><i class="fa fa-map-marker-alt text-primary mr-2"></i>Thailand</small>
+                                    <small class="m-0"><i class="fa fa-map-marker-alt text-primary mr-2"></i>{{$item->city}}</small>
                                     {{-- <small class="m-0"><i class="fa fa-calendar-alt text-primary mr-2"></i>3 days</small> --}}
-                                    <small class="m-0"><i class="fa fa-bed text-primary mr-2"></i>2 bedroom</small>
+                                    <small class="m-0"><i class="fa fa-bed text-primary mr-2"></i>{{$item->bedroom}}</small>
                                 </div>
-                                <a class="h5 text-decoration-none" href="/">Discover amazing places of the world with us
+                                <a class=" text-decoration-none" href="/"><h5>{{$item->title}}</h5>
+                                    <p class="text-dark">{{ Str::limit($item->Description, 100) }}</p>
                                     <div class="border-top mt-4 pt-4">
                                         <div class="d-flex justify-content-between">
-                                            <h6 class="m-0"><i class="fa fa-star text-primary mr-2"></i>4.5 <small>(250)</small></h6>
-                                            <h5 class="m-0">$350</h5>
+                                            <h6 class="m-0"><i class="fa fa-phone text-primary mr-2"></i>{{$item->number}}</h6>
+                                            <h5 class="m-0">{{$item->price}} DH</h5>
                                         </div>
                                     </div>
                                 </a>
                             </div>
                         </div>
                     </div>
-                </div>
+              
+            @endforeach  </div>
             </div>
             <div class="col-lg-4 mt-5 mt-lg-0">
                 <!-- Search Form -->

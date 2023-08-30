@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('bedroom');
             $table->string('city');
             $table->integer('price');
-            $table->integer('number');
+            $table->string('number');
             $table->foreignId('profile_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->timestamp('published_at');
             $table->timestamps();
