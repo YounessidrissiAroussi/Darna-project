@@ -11,10 +11,9 @@
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <!-- Customized Bootstrap Stylesheet -->
-    @vite(['resources/css/style.css', 
-    'resources/js/main.js' ,
+    @vite(['resources/css/style.css',
     'resources/js/lib/owlcarousel/assets/owl.carousel.min.css' 
-    ,'resources/js/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css'  ])
+    ,'resources/js/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css'])
     <title>Darna</title>
     @livewireStyles
 </head>

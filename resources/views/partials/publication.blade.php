@@ -1,6 +1,99 @@
 @extends('layout')
 @section('container')
-<div class="container-fluid py-5">
+<div class="container-fluid">
+    @php
+    use App\Models\Ville;
+        $cities = Ville::all();
+    @endphp
+    @auth
+    <div class="container pt-5">
+            <div class="col-lg-8">
+                <div class="row">
+                    <a onclick="document.getElementById('id01').style.display='block'"  class="col-md-6 text-decoration-none alert alert-success cursor-pointer">
+                        create Publish
+                    </a>
+                    <div id="id01" class="modal">
+                        <form class="container rounded modal-content animate" action="" method="">
+                            <div class="col-md-12">
+                                <h1 class="mt-2 mb-4 text-primary"><span class="text-dark">Create</span> Publish</h1>
+                                <div class="col">
+                                    <div class="col-md-12">
+                                        <div class="mt-3 mb-md-0">
+                                            <div>
+                                                <input type="text" class="form-control p-4 datetimepicker-input" placeholder="Title" name="title" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="mt-3 mb-md-0">
+                                            <textarea class="form-control px-4" style="height: 47px;" name="Description">Write description</textarea>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-md-12">
+                                        <div class="mt-3 mb-md-0">
+                                            <select class="custom-select px-4" style="height: 47px;" name="badroom">
+                                                <option selected>Choose bedroom</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                            </select>
+                                        </div>
+                                    </div> 
+
+                                    <div class="col-md-12">
+                                        <div class="mt-3 mb-md-0">
+                                            <select class="custom-select px-4" style="height: 47px;" name="ville">
+                                                <option selected>Choose City</option>
+                                                @foreach ($cities as $item)
+                                                    <option value="{{$item->ville}}">{{$item->ville}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="mb-3 mb-md-0">
+                                            <div>
+                                                <input type="text" class="form-control p-4" placeholder="Price" name="price"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="mb-3 mb-md-0">
+                                            <div>
+                                                <input type="text" class="form-control p-4" placeholder="Number phone" name="number"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="mb-3 mb-md-0">
+                                            <select class="custom-select px-4" style="height: 47px;">
+                                                <option selected>bedroom</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex" style="margin: auto">
+                                <button class="btn btn-primary rounded my-5 " style="margin-left:4%;"> Create</button>
+                                <button class="btn btn-danger rounded my-5" onclick="document.getElementById('id01').style.display='none'" style="margin-left:4%;"> Cancel</button>
+
+                              
+                            </div>
+                        </form>
+                      </div>
+                </div>
+            </div> 
+    </div>  
+     
+@endauth
     <div class="container py-5">
         <div class="row">
             <div class="col-lg-8">
@@ -24,8 +117,8 @@
                             <div class="p-4">
                                 <div class="d-flex justify-content-between mb-3">
                                     <small class="m-0"><i class="fa fa-map-marker-alt text-primary mr-2"></i>Thailand</small>
-                                    <small class="m-0"><i class="fa fa-calendar-alt text-primary mr-2"></i>3 days</small>
-                                    <small class="m-0"><i class="fa fa-user text-primary mr-2"></i>2 Person</small>
+                                    {{-- <small class="m-0"><i class="fa fa-calendar-alt text-primary mr-2"></i>3 days</small> --}}
+                                    <small class="m-0"><i class="fa fa-bed text-primary mr-2"></i>2 bedroom</small>
                                 </div>
                                 <a class="h5 text-decoration-none" href="/">Discover amazing places of the world with us
                                     <div class="border-top mt-4 pt-4">
@@ -34,7 +127,7 @@
                                             <h5 class="m-0">$350</h5>
                                         </div>
                                     </div>
-                            </a>
+                                </a>
                             </div>
                         </div>
                     </div>

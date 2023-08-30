@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PublicationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,6 +30,7 @@ Route::get('/Profile',[ProfileController::class , 'Profile']);
 Route::get('/Setting',[ProfileController::class , 'profileSetting']);
 Route::delete('/delete/{id}',[ProfileController::class , 'profileDelete']);
 Route::put('/update/{id}',[ProfileController::class , 'update']);
+
 
 
 

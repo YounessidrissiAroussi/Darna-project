@@ -23,7 +23,7 @@
                 <input type="password" class="form-control p-4" name="password" placeholder="Password" />
             </div>
             <div>
-                <button class="btn btn-primary btn-block py-3" type="submit">Sign Up Now</button>
+                <button class="btn btn-primary btn-block py-3" type="submit">Login</button>
             </div>
         </form>
         <div class="col-lg-6 text-dark text-md-left mt-3">
