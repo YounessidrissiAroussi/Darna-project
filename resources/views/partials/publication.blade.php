@@ -4,8 +4,9 @@
     @php
     use App\Models\Ville;
     use App\Models\Publication;
+    use Carbon\Carbon;
         $cities = Ville::all();
-         $publications = Publication::all();
+         $publications = Publication::where('published_at', '<=', now())->orderByDesc('published_at')->get();
     @endphp
     @auth
     <div class="container pt-5">
@@ -119,14 +120,15 @@
                             <div class="p-4">
                                 <div class="d-flex justify-content-between mb-3">
                                     <small class="m-0"><i class="fa fa-map-marker-alt text-primary mr-2"></i>{{$item->city}}</small>
-                                    {{-- <small class="m-0"><i class="fa fa-calendar-alt text-primary mr-2"></i>3 days</small> --}}
+                                    {{-- <small class="m-0"><i class="fa fa-calendar-alt text-primary mr-2"></i>{{Carbon::parse($item->published_at)->diffForHumans() }}</small> --}}
                                     <small class="m-0"><i class="fa fa-bed text-primary mr-2"></i>{{$item->bedroom}}</small>
                                 </div>
                                 <a class=" text-decoration-none" href="/"><h5>{{$item->title}}</h5>
                                     <p class="text-dark">{{ Str::limit($item->Description, 100) }}</p>
+                                    <small class="m-0"><i class="fa fa-calendar-alt text-primary mr-2"></i>{{Carbon::parse($item->published_at)->diffForHumans()}}</small>
                                     <div class="border-top mt-4 pt-4">
                                         <div class="d-flex justify-content-between">
-                                            <h6 class="m-0"><i class="fa fa-phone text-primary mr-2"></i>{{$item->number}}</h6>
+                                            <h6 class="m-0"><i class="fa fa-phone text-primary mr-2"></i>0{{$item->number}}</h6>
                                             <h5 class="m-0">{{$item->price}} DH</h5>
                                         </div>
                                     </div>

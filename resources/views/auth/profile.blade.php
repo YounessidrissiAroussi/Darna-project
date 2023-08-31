@@ -1,6 +1,10 @@
 @extends('layout')
 @section('container')
 
+@php
+     use Carbon\Carbon;
+@endphp
+
 <div class="mx-5 row row-cols-1 row-cols-md-2 g-5 ">
     <div class="col-md-4 mt-4">
         <h4 class="text-uppercase mb-4" style="letter-spacing: 5px;">My Profile</h4>
@@ -51,15 +55,17 @@
                                 <div class="p-4">
                                     <div class="d-flex justify-content-between mb-3">
                                         <small class="m-0"><i class="fa fa-map-marker-alt text-primary mr-2"></i>{{$item->city}}</small>
-                                        {{-- <small class="m-0"><i class="fa fa-calendar-alt text-primary mr-2"></i>3 days</small> --}}
+                                        
                                         <small class="m-0"><i class="fa fa-bed text-primary mr-2"></i>{{$item->bedroom}}</small>
                                     </div>
                                     <a class=" text-decoration-none" href="/"><h5>{{$item->title}}</h5>
                                         <p class="text-dark">{{ Str::limit($item->Description, 100) }}</p>
+                                        <small class="m-0"><i class="fa fa-calendar-alt text-primary mr-2"></i>{{Carbon::parse($item->published_at)->diffForHumans()}}</small>
                                         <div class="border-top mt-4 pt-4">
                                             <div class="d-flex justify-content-between">
                                                 <h6 class="m-0"><i class="fa fa-phone text-primary mr-2"></i>0{{$item->number}}</h6>
                                                 <h5 class="m-0">{{$item->price}} DH</h5>
+                                                
                                             </div>
                                         </div>
                                     </a>
