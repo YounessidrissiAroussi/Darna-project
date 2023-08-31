@@ -42,11 +42,10 @@
                                                 <option value="2">2</option>
                                                 <option value="3">3</option>
                                                 <option value="4">4</option>
-                                                <option value="5">5</option>
+                                                <option value="5+">5+</option>
                                             </select>
                                         </div>
                                     </div> 
-
                                     <div class="col-md-12">
                                         <div class="mt-3 mb-md-0">
                                             <select class="custom-select px-4" style="height: 47px;" name="ville">
@@ -90,15 +89,16 @@
      
 @endauth
     <div class="container py-5">
-        <div class="row"><div class="col-lg-8">
+        <div class="row">
+            <div class="col-lg-8">
                 <div class="row pb-3">
             @foreach ($publications as $item)
-            
                     <div class="col-md-6 mb-4 pb-2">
                         <div class="package-item bg-white mb-2">
                             <img class="img-fluid" src="{{asset('A.png')}}" alt="">
                             @auth
-                            <div class="btn-group dropright" style="position:absolute;left:88% ">
+                            @if (auth()->user()->id == $item->profile_id)
+                              <div class="btn-group dropright" style="position:absolute;left:88% ">
                                 <a type="button" class="btn btn-dark text-white dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                   <i class="fa fa-list"></i>
                                 </a>
@@ -106,9 +106,15 @@
                                         <h6 class="dropdown-header">MORE ACTIONS</h6>
                                         <a class="dropdown-item fa fa-edit" href="#"> Edit</a>
                                         <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item fa fa-trash" href="#">Delete</a>
+                                        <form action="/delete/{{$item->id}}" method="POST">
+                                            @csrf
+                                            @method("DELETE")
+                                            <button class="dropdown-item bg-danger text-white py-2 mb-0 fa fa-trash" onclick="return confirm('U want really Delete this post??')">Delete</button>
+                                        </form>
                                 </div>
-                              </div>
+                              </div>  
+                            @endif
+                            
                             @endauth
                             <div class="p-4">
                                 <div class="d-flex justify-content-between mb-3">
@@ -128,8 +134,8 @@
                             </div>
                         </div>
                     </div>
-              
-            @endforeach  </div>
+            @endforeach  
+        </div>
             </div>
             <div class="col-lg-4 mt-5 mt-lg-0">
                 <!-- Search Form -->

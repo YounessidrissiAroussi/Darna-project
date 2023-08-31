@@ -32,6 +32,8 @@ Route::delete('/delete/{id}',[ProfileController::class , 'profileDelete']);
 Route::put('/update/{id}',[ProfileController::class , 'update']);
 
 Route::post('/publish',[PublicationController::class , 'store']);
+Route::delete('/delete/{id}',[PublicationController::class , 'destroy']);
+
 
 
 

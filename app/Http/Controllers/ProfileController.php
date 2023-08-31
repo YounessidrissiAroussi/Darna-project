@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Profile;
 use App\Http\Requests\StoreProfileRequest;
 use App\Http\Requests\UpdateProfileRequest;
+use App\Models\Publication;
 use Faker\Guesser\Name;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -62,9 +63,11 @@ class ProfileController extends Controller
 
     public function Profile(Request $request)
     {
-        $user = $request->user();
-        return view('auth.profile',compact('user'));
+        $user = Profile::find(Auth::id());
+        return view('auth.profile',['user' => $user]);
     }
+
+
     public function update(UpdateProfileRequest $request)
     {
         $user = Profile::find($request->id);

@@ -6,11 +6,15 @@ use App\Models\Publication;
 use App\Http\Requests\StorePublicationRequest;
 use App\Http\Requests\UpdatePublicationRequest;
 use App\Models\Images;
+use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 class PublicationController extends Controller
 {
    
-
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Store a newly created resource in storage.
      */
@@ -18,8 +22,6 @@ class PublicationController extends Controller
     {
         // dd();
         $uuid = Str::uuid()->toString();
-
-        
         $post = new Publication();
         $post->appartement_id = $uuid;
         $post->title = $request->title;
@@ -73,8 +75,10 @@ class PublicationController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Publication $publication)
+    public function destroy(Request $request)
     {
-        //
+        $publication = Publication::find($request->id);
+        $publication->delete();
+        return back();
     }
 }
