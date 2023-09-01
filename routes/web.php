@@ -33,6 +33,15 @@ Route::put('/update/{id}',[ProfileController::class , 'update']);
 
 Route::post('/publish',[PublicationController::class , 'store']);
 Route::delete('/delete/{id}',[PublicationController::class , 'destroy']);
+Route::get('/edit/{id}',[PublicationController::class , 'edit']);
+
+Route::put('/hide/{id}',[PublicationController::class , 'hide']);
+Route::put('/pub/{id}',[PublicationController::class , 'pub']);
+Route::put('/update/{id}',[PublicationController::class , 'update']);
+
+
+
+
 
 
 

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('publications', function (Blueprint $table) {
             $table->id();
-            $table->uuid('appartement_id');
+            $table->boolean('show')->default(1);
             $table->string('title');
             $table->longText('Description');
             $table->string('bedroom');

@@ -6,7 +6,7 @@
     use App\Models\Publication;
     use Carbon\Carbon;
         $cities = Ville::all();
-         $publications = Publication::where('published_at', '<=', now())->orderByDesc('published_at')->get();
+         $publications = Publication::where('published_at', '<', now())->orwhere('show' ,'=',1)->orderByDesc('published_at')->get();
     @endphp
     @auth
     <div class="container pt-5">
@@ -31,7 +31,7 @@
                                     </div>
                                     <div class="col-md-12">
                                         <div class="mt-3 mb-md-0">
-                                            <textarea class="form-control px-4" style="height: 47px;" name="Description">Write description</textarea>
+                                            <textarea class="form-control px-4" style="height: auto; min-height: 150px;" name="Description" rows="4" cols="50">Write description</textarea>
                                         </div>
                                     </div>
                                     
@@ -87,13 +87,17 @@
                 </div>
             </div> 
     </div>  
-     
+</div>
+</div> 
 @endauth
+
     <div class="container py-5">
         <div class="row">
             <div class="col-lg-8">
                 <div class="row pb-3">
             @foreach ($publications as $item)
+                
+           
                     <div class="col-md-6 mb-4 pb-2">
                         <div class="package-item bg-white mb-2">
                             <img class="img-fluid" src="{{asset('A.png')}}" alt="">
@@ -105,7 +109,7 @@
                                 </a>
                                 <div class="dropdown-menu rounded">
                                         <h6 class="dropdown-header">MORE ACTIONS</h6>
-                                        <a class="dropdown-item fa fa-edit" href="#"> Edit</a>
+                                        <a class="dropdown-item fa fa-edit" href="/edit/{{$item->id}}"> Edit</a>
                                         <div class="dropdown-divider"></div>
                                         <form action="/delete/{{$item->id}}" method="POST">
                                             @csrf
@@ -136,6 +140,7 @@
                             </div>
                         </div>
                     </div>
+                
             @endforeach  
         </div>
             </div>
