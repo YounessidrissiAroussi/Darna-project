@@ -17,72 +17,8 @@
                         </a>
                 </div>
                     <div id="id01" class="modal" style="overflow-y: scroll;">
-                        <form class="container rounded modal-content animate" method="POST" action="/publish" enctype="multipart/form-data">
-                            @csrf
-                            <div class="col-md-12">
-                                <h1 class="mt-2 mb-4 text-primary"><span class="text-dark">Create</span> Publish</h1>
-                                <div class="col">
-                                    <div class="col-md-12">
-                                        <div class="mt-3 mb-md-0">
-                                            <div>
-                                                <input type="text" class="form-control p-4 datetimepicker-input" placeholder="Title" name="title" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="mt-3 mb-md-0">
-                                            <textarea class="form-control px-4" style="height: auto; min-height: 150px;" name="Description" rows="4" cols="50">Write description</textarea>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="col-md-12">
-                                        <div class="mt-3 mb-md-0">
-                                            <select class="custom-select px-4" style="height: 47px;" name="badroom">
-                                                <option selected>Choose bedroom</option>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4">4</option>
-                                                <option value="5+">5+</option>
-                                            </select>
-                                        </div>
-                                    </div> 
-                                    <div class="col-md-12">
-                                        <div class="mt-3 mb-md-0">
-                                            <select class="custom-select px-4" style="height: 47px;" name="ville">
-                                                <option selected>Choose City</option>
-                                                @foreach ($cities as $item)
-                                                    <option value="{{$item->ville}}">{{$item->ville}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="mb-3 mb-md-0">
-                                            <div>
-                                                <input type="text" class="form-control p-4" placeholder="Price" name="price"/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="mb-3 mb-md-0">
-                                            <div>
-                                                <input type="text" class="form-control p-4" placeholder="Number phone" name="number"/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="mb-3 mb-md-0">
-                                            <input type="file" class="form-control py-2"  name="images[]" multiple />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="d-flex" style="margin: auto">
-                                <button  class="btn btn-primary rounded my-5 " style="margin-left:4%;"> Create</button>
-                            </div>
-                        </form>
                         
+                        @include('partials.create')
                       </div>
                 </div>
             </div> 
@@ -97,10 +33,10 @@
                 <div class="row pb-3">
             @foreach ($publications as $item)
                 
-           
+                    {{-- {{dd($item->images[0]->images)}} --}}
                     <div class="col-md-6 mb-4 pb-2">
                         <div class="package-item bg-white mb-2">
-                            <img class="img-fluid" src="{{asset('A.png')}}" alt="">
+                            <img class="img-fluid" src="{{ isset($item->images[0]) ? asset("storage/{$item->images[0]->images}") : '' }}" alt=""  width="1000" height="700">
                             @auth
                             @if (auth()->user()->id == $item->profile_id)
                               <div class="btn-group dropright" style="position:absolute;left:88% ">
@@ -122,12 +58,13 @@
                             
                             @endauth
                             <div class="p-4">
+                                <a class=" text-decoration-none" href="/show/{{$item->id}}">
                                 <div class="d-flex justify-content-between mb-3">
                                     <small class="m-0"><i class="fa fa-map-marker-alt text-primary mr-2"></i>{{$item->city}}</small>
                                     {{-- <small class="m-0"><i class="fa fa-calendar-alt text-primary mr-2"></i>{{Carbon::parse($item->published_at)->diffForHumans() }}</small> --}}
                                     <small class="m-0"><i class="fa fa-bed text-primary mr-2"></i>{{$item->bedroom}}</small>
                                 </div>
-                                <a class=" text-decoration-none" href="/show/{{$item->id}}"><h5>{{$item->title}}</h5>
+                                <h5>{{$item->title}}</h5>
                                     <p class="text-dark">{{ Str::limit($item->Description, 100) }}</p>
                                     <small class="m-0"><i class="fa fa-calendar-alt text-primary mr-2"></i>{{Carbon::parse($item->published_at)->diffForHumans()}}</small>
                                     <div class="border-top mt-4 pt-4">

@@ -7,13 +7,10 @@
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"> 
-
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <!-- Customized Bootstrap Stylesheet -->
-    @vite(['resources/css/style.css',
-    'resources/js/lib/owlcarousel/assets/owl.carousel.min.css' 
-    ,'resources/js/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css'])
+    @vite(['resources/css/app.css','resources/js/app.js'])
     <title>Darna</title>
     @livewireStyles
 </head>
@@ -24,21 +21,5 @@
   @livewireScripts
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    
-        <script>
-                // Get the modal
-                var modal = document.getElementById('id01');
-                var modal2 = document.getElementById('id02');
-
-                // When the user clicks anywhere outside of the modal, close it
-                window.onclick = function(event) {
-                    if (event.target == modal) {
-                        modal.style.display = "none";
-                    }
-                    
-
-                }
-        </script>
-   
 </body>
 </html>

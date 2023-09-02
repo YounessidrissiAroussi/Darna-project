@@ -6,7 +6,7 @@
         <h4 class="text-uppercase mt-4" style="letter-spacing: 5px;">Edit my Information</h4>
         <div class="bg-white" style="padding: 30px;">
             <div class="input-group d-block">
-                <form action="/update/{{$user->id}}" method="POST">
+                <form action="/updateProfile/{{$user->id}}" method="POST">
                     @method('PUT')
                     @csrf
                     <input type="text" class="form-control p-4 w-100 my-2" name="name" value="{{$user->name}}">
@@ -52,7 +52,7 @@
                 <p class="text-gray text-justify">
                     Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information you wish to keep.
                 </p>
-                <form action="/delete/{{$user->id}}" method="POST">
+                <form action="/deleteProfile/{{$user->id}}" method="POST">
                     @csrf
                     @method('DELETE')
                     <input type="text" class="form-control p-4 w-100 my-2" placeholder="Enter your password" name="password">

@@ -74,33 +74,14 @@
                                             @if ($item->show == 1)
                                                 <form action="/hide/{{$item->id}}" method="POST">
                                                 @csrf
-                                                @method("PUT")
-                                                <input type="hidden" name="show" value="{{$item->show}}" > 
-                                                <input type="hidden" name="title" value="{{$item->title}}" > 
-                                                <input type="hidden" name="Description" value="{{$item->Description}}"> 
-                                                <input type="hidden" name="bedroom" value="{{$item->bedroom}}"> 
-                                                <input type="hidden" name="city" value="{{$item->city}}"> 
-                                                <input type="hidden" name="price" value="{{$item->price}}"> 
-                                                <input type="hidden" name="number" value="{{$item->number}}"> 
-                                                <input type="hidden" name="profile_id" value="{{$item->profile_id}}"> 
-                                                <input type="hidden" name="published_at" value="{{$item->published_at}}"> 
+                                                @method("PATCH")
                                                 <button class="dropdown-item bg-danger text-white py-2 mb-0 fa fa-eye-slash">Hide</button>
                                                 <p class="text-gray mt-3">This Post Public</p>
                                             </form>
                                             @else
                                             <form action="/pub/{{$item->id}}" method="POST">
                                                 @csrf
-                                                @method("PUT")
-                                                <input type="hidden" name="show" value="{{$item->show}}" > 
-                                                <input type="hidden" name="title" value="{{$item->title}}" > 
-                                                <input type="hidden" name="Description" value="{{$item->Description}}"> 
-                                                <input type="hidden" name="bedroom" value="{{$item->bedroom}}"> 
-                                                <input type="hidden" name="city" value="{{$item->city}}"> 
-                                                <input type="hidden" name="price" value="{{$item->price}}"> 
-                                                <input type="hidden" name="number" value="{{$item->number}}"> 
-                                                <input type="hidden" name="profile_id" value="{{$item->profile_id}}"> 
-                                                <input type="hidden" name="published_at" value="{{$item->published_at}}"> 
-                                               
+                                                @method("PATCH")
                                                 <button class="dropdown-item bg-success text-white py-2 mb-0 fa fa-eye">public</button>
                                                 <p class="text-gray mt-3">This Post Hidden</p>
                                             </form>

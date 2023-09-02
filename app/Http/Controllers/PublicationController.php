@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Models\Images;
 use App\Models\Publication;
+use Illuminate\Http\Request;
+
+use Illuminate\Support\Facades\File;
 use App\Http\Requests\StorePublicationRequest;
 use App\Http\Requests\UpdatePublicationRequest;
-use App\Models\Images;
-use Illuminate\Http\Request;
+
 class PublicationController extends Controller
 {
    
@@ -14,23 +18,12 @@ class PublicationController extends Controller
     {
         $this->middleware('auth');
     }
-    /**
-     * Store a newly created resource in storage.
-     */
-
+    
     public function hide(UpdatePublicationRequest $request)
     {
         
         $post = Publication::find($request->id);
         $post->show = 0;
-        $post->title = $request->title;
-        $post->Description = $request->Description;
-        $post->bedroom = $request->bedroom;
-        $post->city = $request->city;
-        $post->price = (int)$request->price;
-        $post->number = (int)$request->number;
-        $post->profile_id = $request->profile_id;
-        $post->published_at = $request->published_at;
         $post->update();
         return back();
     }
@@ -39,21 +32,14 @@ class PublicationController extends Controller
         
         $post = Publication::find($request->id);
         $post->show = 1;
-        $post->title = $request->title;
-        $post->Description = $request->Description;
-        $post->bedroom = $request->bedroom;
-        $post->city = $request->city;
-        $post->price = (int)$request->price;
-        $post->number = (int)$request->number;
-        $post->profile_id = $request->profile_id;
-        $post->published_at = $request->published_at;
         $post->update();
         return back();
     }
     public function store(StorePublicationRequest $request)
     {
+        $request->Validated();
         $post = new Publication();
-        $post->show = 0;
+        $post->show = 1;
         $post->title = $request->title;
         $post->Description = $request->Description;
         $post->bedroom = $request->badroom;
@@ -122,6 +108,11 @@ class PublicationController extends Controller
     public function destroy(Request $request)
     {
         $publication = Publication::find($request->id);
+        // dd($publication->images );
+            foreach($publication->images as $image){
+                $publication->delete();
+                File::delete('storage/'.$image->images);
+            }
         $publication->delete();
         return back();
     }

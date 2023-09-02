@@ -28,8 +28,8 @@ Route::post('/login',[ProfileController::class , 'checkLogin'])->name('login.che
 Route::get('/logout',[ProfileController::class , 'logout']);
 Route::get('/Profile',[ProfileController::class , 'Profile']);
 Route::get('/Setting',[ProfileController::class , 'profileSetting']);
-Route::delete('/delete/{id}',[ProfileController::class , 'profileDelete']);
-Route::put('/update/{id}',[ProfileController::class , 'update']);
+Route::delete('/deleteProfile/{id}',[ProfileController::class , 'profileDelete']);
+Route::put('/updateProfile/{id}',[ProfileController::class , 'update']);
 
 Route::post('/publish',[PublicationController::class , 'store']);
 Route::delete('/delete/{id}',[PublicationController::class , 'destroy']);
@@ -37,8 +37,8 @@ Route::get('/edit/{id}',[PublicationController::class , 'edit']);
 Route::get('/show/{id}',[PublicationController::class , 'show']);
 
 
-Route::put('/hide/{id}',[PublicationController::class , 'hide']);
-Route::put('/pub/{id}',[PublicationController::class , 'pub']);
+Route::patch('/hide/{id}',[PublicationController::class , 'hide']);
+Route::patch('/pub/{id}',[PublicationController::class , 'pub']);
 Route::put('/update/{id}',[PublicationController::class , 'update']);
 
 

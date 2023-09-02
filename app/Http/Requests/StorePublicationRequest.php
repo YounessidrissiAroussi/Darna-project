@@ -22,7 +22,13 @@ class StorePublicationRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'title' => 'required|min:4',
+            'Description' => 'required',
+            'badroom' => 'required',
+            'ville' => 'required',
+            'price' => 'required',
+            'number' => 'required|min:10',
+            'images' => 'required'
         ];
     }
 }

@@ -16,8 +16,8 @@ class Publication extends Model
         return $this->belongsTo(Profile::class);
     }
 
-    // public function Images()
-    // {
-    //     return $this->hasMany(Images::class);
-    // }
+    public function Images()
+    {
+        return $this->hasMany(Images::class);
+    }
 }
