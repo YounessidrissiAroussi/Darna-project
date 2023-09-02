@@ -127,7 +127,7 @@
                                     {{-- <small class="m-0"><i class="fa fa-calendar-alt text-primary mr-2"></i>{{Carbon::parse($item->published_at)->diffForHumans() }}</small> --}}
                                     <small class="m-0"><i class="fa fa-bed text-primary mr-2"></i>{{$item->bedroom}}</small>
                                 </div>
-                                <a class=" text-decoration-none" href="/"><h5>{{$item->title}}</h5>
+                                <a class=" text-decoration-none" href="/show/{{$item->id}}"><h5>{{$item->title}}</h5>
                                     <p class="text-dark">{{ Str::limit($item->Description, 100) }}</p>
                                     <small class="m-0"><i class="fa fa-calendar-alt text-primary mr-2"></i>{{Carbon::parse($item->published_at)->diffForHumans()}}</small>
                                     <div class="border-top mt-4 pt-4">

@@ -34,6 +34,8 @@ Route::put('/update/{id}',[ProfileController::class , 'update']);
 Route::post('/publish',[PublicationController::class , 'store']);
 Route::delete('/delete/{id}',[PublicationController::class , 'destroy']);
 Route::get('/edit/{id}',[PublicationController::class , 'edit']);
+Route::get('/show/{id}',[PublicationController::class , 'show']);
+
 
 Route::put('/hide/{id}',[PublicationController::class , 'hide']);
 Route::put('/pub/{id}',[PublicationController::class , 'pub']);

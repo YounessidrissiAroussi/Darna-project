@@ -81,9 +81,10 @@ class PublicationController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Publication $publication)
+    public function show(Request $request)
     {
-        //
+        $pub = Publication::find($request->id);
+       return view('partials.show',compact('pub'));
     }
 
     /**
