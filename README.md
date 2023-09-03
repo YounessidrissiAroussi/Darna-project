@@ -6,6 +6,7 @@ config DB add fille .env<br/>
 php artisan migrate<br/>
 php artisan storage:link<br/>
 
+<img src="https://github.com/YounessidrissiAroussi/Darna-project/assets/92603400/9d6d0bcb-91a5-4539-a5ca-dea8a36b44d4" width="400" alt="Logo">
+<img src="https://github.com/YounessidrissiAroussi/Darna-project/assets/92603400/9d6d0bcb-91a5-4539-a5ca-dea8a36b44d4" width="400" alt="Lar">
 
-https://github.com/YounessidrissiAroussi/Darna-project/assets/92603400/9d6d0bcb-91a5-4539-a5ca-dea8a36b44d4
-https://github.com/YounessidrissiAroussi/Darna-project/assets/92603400/74064011-2aa9-49bf-9072-4180345537ee
+
