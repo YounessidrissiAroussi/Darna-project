@@ -3,13 +3,13 @@
 @php
     use Carbon\Carbon;
 @endphp
-<section class="py-5">
+<section class="py-5 d-flex">
     <div class="container px-4 px-lg-5 my-5">
         <div class="row gx-4 gx-lg-5 align-items-center package-item bg-white mb-2 p-5 rounded">
             <div class="col-md-6">
                 <div class="container-fluid p-0 mt-5" >
                     <div id="header-carousel" class="carousel slide" data-ride="carousel">
-                        <div class="carousel-inner" style="margin-bottom: 80%">
+                        <div class="carousel-inner">
                             <div class="carousel-item active">
                                 <img class="img-fluid" src="{{ isset($pub->images[0]) ? asset("storage/{$pub->images[0]->images}") : '' }}" alt="" style="height: 400px;">                            </div>
                             @if (@isset($pub->images))
@@ -34,7 +34,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 ">
+            <div class="col-md-6">
                 <h1>{{$pub->title}}</h1>
                 <div class="p-4">
                     <div class="d-flex justify-content-between mb-3">

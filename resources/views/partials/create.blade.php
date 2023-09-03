@@ -1,4 +1,10 @@
-<form class="container rounded modal-content animate" method="POST" action="/publish" enctype="multipart/form-data">
+@extends('layout')
+@section('container')
+@php
+use App\Models\Ville;
+    $cities = Ville::all();
+@endphp
+<form class="container rounded modal-content animate" style="margin-top: 12px" method="POST" action="/publish" enctype="multipart/form-data">
     @csrf
     <div class="col-md-12">
         <h1 class="mt-2 mb-4 text-primary"><span class="text-dark">Create</span> Publish</h1>
@@ -113,3 +119,6 @@
     </div>
 </form>
 
+
+
+@endsection

@@ -10,18 +10,18 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use App\Http\Requests\StorePublicationRequest;
 use App\Http\Requests\UpdatePublicationRequest;
+use Illuminate\Support\Facades\Gate;
 
 class PublicationController extends Controller
 {
    
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except('show');
     }
     
     public function hide(UpdatePublicationRequest $request)
-    {
-        
+    { 
         $post = Publication::find($request->id);
         $post->show = 0;
         $post->update();
@@ -29,11 +29,14 @@ class PublicationController extends Controller
     }
     public function pub(UpdatePublicationRequest $request)
     {
-        
         $post = Publication::find($request->id);
         $post->show = 1;
         $post->update();
         return back();
+    }
+    public function create()
+    {
+        return view('partials.create');
     }
     public function store(StorePublicationRequest $request)
     {
@@ -61,7 +64,7 @@ class PublicationController extends Controller
                 $img->save();
             }
         }
-        return back();
+        return redirect('/');
     }
 
     /**
@@ -79,7 +82,8 @@ class PublicationController extends Controller
     public function edit(Request $request)
     {
         $pub = Publication::find($request->id);
-       return view('partials.edit',compact('pub'));
+        $this->authorize('update',$pub);
+        return view('partials.edit',compact('pub'));
     }
 
     /**
@@ -87,8 +91,9 @@ class PublicationController extends Controller
      */
     public function update(UpdatePublicationRequest $request)
     {
-        // dd($request->all());
+        
         $post = Publication::find($request->id);
+        Gate::authorize('update',$post);
         $post->show = $request->show;
         $post->title = $request->title;
         $post->Description = $request->Description;
