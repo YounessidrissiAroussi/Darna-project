@@ -4,7 +4,7 @@
 ===>composer update<br/>
 <h4>For .env file</h4>
 ===>config DB add fille .env<br/>
-<h4>For migrate table to Db file</h4>
+<h4>For migrate table to Db</h4>
 ===>php artisan migrate<br/>
 <h4>For Display images</h4>
 ===>php artisan storage:link<br/>
