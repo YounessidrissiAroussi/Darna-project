@@ -10,7 +10,7 @@
 ===>php artisan storage:link<br/>
 
 
-[screencapture-127-0-0-1-8000-2023-09-03-19_35_56](https://github.com/YounessidrissiAroussi/Darna-project/assets/92603400/6fce470b-c21a-4908-89a3-42f2dfd90aba)
+[Alt text](https://github.com/YounessidrissiAroussi/Darna-project/assets/92603400/6fce470b-c21a-4908-89a3-42f2dfd90aba)
 Authenticate
 
 
