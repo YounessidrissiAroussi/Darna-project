@@ -11,7 +11,7 @@
 
 
 ![screencapture-127-0-0-1-8000-2023-09-03-19_35_56](https://github.com/YounessidrissiAroussi/Darna-project/assets/92603400/6fce470b-c21a-4908-89a3-42f2dfd90aba)
-Authentication 
+Authenticate
 ![Capture d’écran 2023-09-02 201333](https://github.com/YounessidrissiAroussi/Darna-project/assets/92603400/72148dc9-cf7a-4ab5-a15f-b476c2dd4900)
 ![Capture d’écran 2023-09-02 201433](https://github.com/YounessidrissiAroussi/Darna-project/assets/92603400/6227d2f5-e404-495d-bc9c-304506a52b15)
 ![screencapture-127-0-0-1-8000-2023-09-02-20_18_03](https://github.com/YounessidrissiAroussi/Darna-project/assets/92603400/1a3cf64f-22a6-40cc-bc1b-527050757bdc)
