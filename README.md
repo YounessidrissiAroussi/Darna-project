@@ -2,8 +2,7 @@
 
 <h4>For vendor folder</h4>
 ===>composer update<br/>
-<h4>For .env file</h4>
-===>config DB add fille .env<br/>
+<h4>config DB add fille .env</h4><br/>
 <h4>For migrate table to Db</h4>
 ===>php artisan migrate<br/>
 <h4>For Display images</h4>
